@@ -1,1 +1,0 @@
-# defy25-homepage
