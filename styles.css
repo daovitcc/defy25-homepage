@@ -7,13 +7,12 @@
 html, body {
     width: 100%;
     height: 100%;
-
     font-family: "PP Neue Montreal";
 }
 
 img {
-    width: 10vw;
-    height: 10vh;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -76,8 +75,6 @@ p {
     align-items: center;
     background: #eee5d2;
     border-left: 1.5px solid rgba(163, 155, 137, 0.35);
-    clip-path: polygon(0, 0, 100% 0, 100% 100%, 0% 100%);
-    margin-left: -1px;
 }
 
 .menu-item-index {
@@ -91,111 +88,103 @@ p {
 }
 
 .menu-item-index p:nth-child(2) {
-    position:relative;
+    position:absolute; /* Ensure proper positioning */
     transform: rotate(-90deg);
 }
 
 .menu-link {
-    position: absolute;
-    bottom: 2.5%;
-    left: 55%;
+    position:absolute; /* Ensure proper positioning */
+    bottom:2.5%; /* Adjust as needed */
+    left:55%;
     transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .menu-item:nth-child(3) .menu-link {
-    bottom:7.5%;
+   bottom :7.5%; /* Adjust as needed */
 }
 
 .menu-link p {
-    position: relative;
-    display: flex;
-    font-family: "OPTICaslon-ExtraCondensed";
-    font-size: 200px;
-    font-weight: lighter;
-    transition: all 0.5s;
+   position :relative; 
+   display :flex; 
+   font-family : "OPTICaslon-ExtraCondensed"; 
+   font-size :200px; 
+   font-weight :lighter; 
+   transition : all .5s; 
 }
 
-.menu link p span {
-    position: relative;
+.menu-link p span { /* Fixed selector */
+   position :relative; 
 }
 
 .menu-item .menu-link-main,
 .menu-item .menu-link-hover {
-    transition: all 0.5s;
+   transition : all .5s; 
 }
 
 .menu-link-main p {
-    color: #2c221d;
+   color :#2c221d; 
 }
 
-.menu-item .menu-link-hover {
-    left: 150%;
-    color: rgba(163, 155, 137, 0.35);
+/* Hover effect for images */
+.menu-image {
+   position:absolute; /* Ensure proper positioning */
+   width :75%; 
+   left :50%; 
+   top :25%; 
+   transform :translate(-50%, -50%); 
+   opacity :0; /* Initially hidden */
+   transition : opacity .5s ease; /* Smooth transition for opacity */
 }
 
+/* Show image on hover */
+.menu-item:hover .menu-image { /* Change this line to apply hover effect */
+   opacity :1; /* Show image on hover */
+}
+
+/* Optional additional styles for menu item hover states */
 .menu-item-hover .menu-link-main {
-    left: 100%;
+   left :100%; 
 }
 
 .menu-item-hover .menu-link-hover {
-    left: 50%;
+   left :50%; 
 }
 
-.menu-image {
-    position: absolute;
-    width: 75%;
-    left: 35%;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    clip-path: polygon(50% 50%, 50%, 50%, 50% 50%, 50% 50%);
-    transition: 0.5s all cubic-bezier(0.165 0.84, 0.44, 1);
-}
+/* Media queries for responsiveness */
+@media(max-width :900px) {
+   .menu { 
+       flex-direction :column; 
+   }
 
-.menu-item.menu-opened:hover .menu-image {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100% );
-}
+   .menu-link { 
+       bottom :unset; 
+       top :50%; 
+       left :50%; 
+       transform :translate(-50%, -50%) rotate(0deg); 
+   }
 
-@media(max-width: 900px) {
-    .menu {
-        flex-direction: column;
-    }
+   .menu-item:nth-child(3) .menu-link { 
+       bottom :unset; 
+   }
 
-    .menu-link {
-        bottom: unset;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
+   .menu-link p { 
+       font-size :80px; 
+   }
 
+   .menu-link-hover { 
+       display:none; 
+   }
 
-    .menu-item:nth-child(3) .menu-link {
-        bottom: unset;
-    }
+   .menu-item-hover .menu-link-main { 
+       top :50%; 
+       left :50%; 
+   }
 
-    .menu-link p {
-        font-size: 80px;
-    }
+   .menu-item-index { 
+       align-items:center; 
+   }
 
-    .menu-link-hover {
-        display: none;
-    }
-
-    .menu-item-hover .menu-link-main {
-        top: 50%;
-        left: 50%;
-    }
-
-    .menu-item-index {
-        align-items: center;
-    }
-
-    .menu-item-index p:nth-child(1) {
-        padding: 0 0.5em;
-    }
-
-    .menu-img {
-        display: none;
-    }
-
+   .menu-item-index p:nth-child(1) { 
+       padding :0 .5em; 
+   }
 }
